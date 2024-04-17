@@ -1,0 +1,173 @@
+
+------------------------------ Navigating -----------------------
+
+pwd 		- Print Working Directory
+
+	$ pwd
+	/Users/sonny/Downloads
+
+
+mkdir 		- Make Directory
+
+	$ mkdir new-directory
+	$ ls
+	old-directory    new-directory
+
+
+ls 		- List
+
+	$ ls Desktop
+	resume.pdf
+	photo.png
+
+	-a : lists all contents, including hidden files and directories.
+	$ ls -a
+
+	-l : lists all contents, in long format.
+	$ ls -l
+
+	-t : lists all contents, by the time they were last modified.
+	$ ls -t
+
+
+cd 		- Change Directory
+
+	$ cd some-directory				(change to lower directory)
+	$ cd .. 					(change to upper directory)
+	$ cd some-lower-directory/lower-directory 	(change to lower relative path)
+	$ cd ../some-directory/ 			(change to upper relative path)
+
+
+Clear 		- to clear the terminal
+
+tab 		- to autocomplete the line
+
+history		- command history
+
+
+------------------------------ Manipulating files and Directories -----------------------
+
+touch 		- Create New File
+
+	$ touch grocery-list.txt
+
+echo		- Outputs the strings that are passed to it as arguments
+
+cp 		- Copy
+
+	$ cp file_source file_destination
+	$ cp file_source file_destination destination_folder
+
+mv 		- Move
+
+	$ mv file.txt destination_folder/
+	$ mv * destination_folder/ (move all files to destination folder)
+
+rm 		- Remove
+	$ rm file.txt  (remove specific file)
+	$ rm -r folder (remove entire folder)
+	$ rm folder/*  (remove all files in folder)
+
+
+------------------------------ Redirecting Input and Output -----------------------
+
+>>		- Redirect and append (add)
+
+	$ echo "Hello World!" >> greetings.txt (append "Hello World!" to greetings.txt)
+
+|		- Pipe (transfer) shell command
+		(transfer the standard output from the command on its left into the standard input of the command on its right)
+
+	$ echo "Hello World" | wc -w 	(transfer "Hello World" output to input wc -w (count the number of words from)
+	$ cat file1.txt | wc | cat > count_file1.txt 
+
+
+>		- Redirecting Output
+
+	$ echo "Hello" > hello.txt			(redirect output "Hello" to input "hello.txt", overwriting all original content in hello.txt)
+	$ cat file1.txt > file2.txt			(redirect output file1.txt and overwrite file2.txt)
+	$ cat < file.txt				(redirect output file.txt, same result as "cat file.txt")
+	$ cat file1.txt | sort > sorted_file1.txt 	(few command combined with redirection: transfer it, sort it, and redirect it)
+	$ sort file1.txt | uniq > uniq-file1.txt
+
+
+cat		- Display
+
+	$ cat file.txt
+	$ cat file1.txt file2.txt
+
+	
+grep		- Search
+
+	$ grep 'word' file.txt		(search "word" into "file.txt)
+	$ grep -i			(case not sensitive)
+	$ grep -R			(search in directory and subdirectories, outputs file names and lines matching results)
+	$ grep -Rl			(outputs only filenames)
+	
+
+sed		 - Stream Editor
+
+	$ sed 's/sring1/string2/g' file.txt 	(s-substitute, string1 by string2, g-globally all instances, in file.txt)
+	$ sed 's/sring1/string2/' file.txt 	(s-substitute, string1 by string2, g-globally all instances, in file.txt)
+	$ sed -i 's/sring1/string2/g' file.txt 	(same output rewriting the file.txt)
+
+
+
+------------------------------ Configuring the Environment -----------------------
+
+
+.bash_profile		- Source Bash Profile
+
+	$ nano .bash_profile 		(create a bash_profile using "nano" text editor)
+	$ source .bash_profile 		(activate all .bash_profile changes, after creating "alias", etc.)
+	
+
+alias			- assign commonly used commands to shortcuts/aliases
+
+	$ alias pd="pwd"
+
+
+export			- export command makes a given variable available to all child sessions initiated from the current session
+
+	Procedure Example:
+
+	1)	$ nano .bash_profile
+	2)	$ export USER="User Name" 	(save User Name in USER variable)
+	3)	$ source .bash_profile		(call .bash_profile)
+	4)	$ echo $USER			(call variable USER, it will return "User Name")
+
+
+Environment Variables:
+
+export PS1=">> "	- change the default command prompt from $ to >>
+
+echo $HOME		- displays the path of the home directory ~
+
+echo $PATH		- PATH variable lists which directories contain scripts (separated by ":")
+				Most of the commands are located in /bin/
+
+
+env			- lists environment variables
+		
+		$ env
+		$ env | PATH	(pipes env to grep, same as command "echo $PATH")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
